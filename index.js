@@ -55,12 +55,27 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-}
-
-// function to initialize program
-function init() {
-
-}
-
-// function call to initialize program
-init();
+    const outputPath = path.join(process.cwd(), fileName);
+  
+    fs.writeFile(outputPath, data, (err) => {
+      if (err) {
+        console.error('Error writing README:', err);
+      } else {
+        console.log(`${fileName} has been generated successfully.`);
+      }
+    });
+  }
+  
+  // function to initialize program
+  function init() {
+    inquirer.prompt(questions).then((answers) => {
+      // Generate the README using the collected answers
+      const readmeContent = generateMarkdown(answers);
+      
+      // Write the README content to a file (e.g., 'README.md')
+      writeToFile('README.md', readmeContent);
+    });
+  }
+  
+  // function call to initialize program
+  init();

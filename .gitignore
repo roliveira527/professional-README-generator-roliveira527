@@ -3,3 +3,11 @@ node_modules/
 
 # Optional: Log files
 npm-debug.log*
+
+# Optional: Editor-specific files
+.vscode/
+.idea/
+
+# Optional: OS-specific files
+.DS_Store
+Thumbs.db
